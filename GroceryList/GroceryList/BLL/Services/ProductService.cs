@@ -11,7 +11,7 @@ namespace GroceryList.BLL.Services
     {
         private readonly ProductRepository _productRepository;
 
-        public ProductService(HttpContext httpContext)
+        public ProductService(HttpContextBase httpContext)
         {
             _productRepository = new ProductRepository(httpContext);
         }

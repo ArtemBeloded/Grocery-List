@@ -11,8 +11,8 @@ namespace GroceryList.DAL.Repositories
     public class ProductRepository : IProductRepository
     {
         private ProductsBasket _productBasket;
-        private readonly HttpContext _httpContext;
-        public ProductRepository(HttpContext httpContext)
+        private readonly HttpContextBase _httpContext;
+        public ProductRepository(HttpContextBase httpContext)
         {
             _httpContext = httpContext;
             InitSession();
@@ -64,7 +64,6 @@ namespace GroceryList.DAL.Repositories
 
         private void InitSession()
         {
-            InitSession();
             _productBasket = _httpContext.Session["Products"] as ProductsBasket;
             if (_productBasket == null)
             {
