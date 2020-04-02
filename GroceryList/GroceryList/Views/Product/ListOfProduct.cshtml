@@ -1,5 +1,13 @@
 ﻿@model List<GroceryList.DAL.Models.Product>
 
+    <div>
+        @using (Html.BeginForm("AddProduct", "Product"))
+        {
+            <input type="submit" value="Add new product" />
+        }
+    </div>
+
+
 <table class="table">
     <thead>
         <tr>
@@ -10,14 +18,63 @@
         </tr>
     </thead>
     <tbody>
+        @{int i = 1;}
         @foreach (var item in Model)
         {
         <tr>
-            <td>@item.Id</td>
+            <td>@i</td>
             <td>@item.Name</td>
             <td>@item.Quantity</td>
             <td>@item.units</td>
+            <td>
+                @using (Html.BeginForm("DetailProduct", "Product", new { id = item.Id }, FormMethod.Post))
+                {
+                    <input type="submit" value="Detail" />
+                }
+            </td>
+            <td>
+                @using (Html.BeginForm("EditProduct", "Product", new { id = item.Id }, FormMethod.Post))
+                {
+                    <input type="submit" value="Edit" />
+                }
+            </td>
+            <td>
+                @using (Html.BeginForm("DeleteProduct", "Product", new { id = item.Id }, FormMethod.Post))
+                {
+                    <input type="submit" value="Delete" />
+                }
+            </td>
         </tr>
+            i++;
+
         }
     </tbody>
 </table>
+
+
+<form action="https://google.com">
+    <input id="youtube" name="youtube" type="submit" value="Go to Google" />
+</form>
+<select id="countires" name="countires">
+    <option value="">Countries</option>
+    <option>Russia</option>
+    <option>USA</option>
+    <option>Canada</option>
+    <option>France</option>
+</select>
+
+<form action="/Home/Array" method="post">
+    <input id="names" name="names" type="text" value="" />
+    <input id="names" name="names" type="text" value="" />
+    <input id="names" name="names" type="text" value="" />
+    <input id="names" name="names" type="text" value="" />
+    <input type="submit" />
+</form>
+@using (Html.BeginForm())
+{
+    @Html.TextBox("names")
+    @Html.TextBox("names")
+    @Html.TextBox("names")
+    @Html.TextBox("names")
+    <input type="submit" />
+}
