@@ -29,17 +29,19 @@ namespace GroceryList.Controllers
 
         public ActionResult SaveNewProduct(Product product) 
         {
+            product.Id = Guid.NewGuid();
+           // product.DateOfCreate = DateTime.Now;
             _productService.AddProduct(product, this.HttpContext);
             return RedirectToAction("ListOfProduct");
         }
 
-        public ActionResult DetailProduct(int id) 
+        public ActionResult DetailProduct(Guid id) 
         {
             var product = _productService.GetProduct(id, this.HttpContext);
             return View(product);
         }
 
-        public ActionResult EditProduct(int id)
+        public ActionResult EditProduct(Guid id)
         {
             var product = _productService.GetProduct(id, this.HttpContext);
             return View(product);
@@ -53,7 +55,7 @@ namespace GroceryList.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteProduct(int id) 
+        public ActionResult DeleteProduct(Guid id) 
         {
             _productService.DeleteProduct(id, this.HttpContext);
             return RedirectToAction("ListOfProduct");

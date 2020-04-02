@@ -21,12 +21,12 @@ namespace GroceryList.BLL.Services
             return _productRepository.AddProduct(product, httpContext);
         }
 
-        public bool DeleteProduct(int id, HttpContextBase httpContext)
+        public bool DeleteProduct(Guid id, HttpContextBase httpContext)
         {
             return _productRepository.DeleteProduct(id, httpContext);
         }
 
-        public Product GetProduct(int id, HttpContextBase httpContext)
+        public Product GetProduct(Guid id, HttpContextBase httpContext)
         {
             return _productRepository.GetProduct(id, httpContext);
         }

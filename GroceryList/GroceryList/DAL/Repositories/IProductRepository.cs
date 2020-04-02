@@ -9,10 +9,10 @@ namespace GroceryList.DAL.Repositories
 {
     public interface IProductRepository
     {
-        Product GetProduct(int id);
+        Product GetProduct(Guid id);
         List<Product> GetProducts();
         bool AddProduct(Product product);
         bool UpdateProduct(Product product);
-        bool DeleteProduct(int id);
+        bool DeleteProduct(Guid id);
     }
 }

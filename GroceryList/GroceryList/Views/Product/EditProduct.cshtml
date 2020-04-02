@@ -4,6 +4,7 @@
 @using (Html.BeginForm("UpdateProduct", "Product"))
 {
     <input type="hidden" value="@Model.Id" name="Id" />
+    <input type="hidden" value="@Model.DateOfCreate" name="DateOfCreate" />
     <table>
         <tr>
             <td><p>Product name</p></td>

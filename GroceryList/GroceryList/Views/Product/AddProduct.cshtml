@@ -3,7 +3,6 @@
 
 @using (Html.BeginForm("SaveNewProduct", "Product"))
 {
-    <input type="hidden" value="1" name="Id" />
     <table>
         <tr>
             <td><p>Enter product name</p></td>
@@ -14,6 +13,11 @@
             <td><input type="text" name="Quantity" /> </td>
             <td>
                 @Html.EnumDropDownListFor(Model => Model.units)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Выберите дату:</p> <input type="date" name="DateOfCreate" value="">
             </td>
         </tr>
         <tr>
