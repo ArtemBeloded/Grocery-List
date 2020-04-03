@@ -1,0 +1,63 @@
+﻿@model IEnumerable<GroceryList.DAL.Models.Product>
+
+@*@section Styles{
+    <style>
+        table>tbody:first-child, table>tbody :last-child {
+            background-color:aqua;
+        }
+    </style>
+}*@
+
+<div class="col-md-10">
+
+</div>
+<div class="col-md-2 ">
+    @using (Html.BeginForm("AddProduct", "Product"))
+    {
+        <input class="addbutton" type="submit" value="Add new product" style="vertical-align: " />
+    }
+</div>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Units</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int i = 1;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@item.Name</td>
+                <td>@item.Quantity</td>
+                <td>@item.units</td>
+                <td>
+                    @using (Html.BeginForm("DetailProduct", "Product", new { id = item.Id }, FormMethod.Post))
+                    {
+                        <input type="submit" value="Detail" class="btn btn-dark" />
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("EditProduct", "Product", new { id = item.Id }, FormMethod.Post))
+                    {
+                        <input type="submit" value="Edit" class="btn btn-dark" />
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("DeleteProduct", "Product", new { id = item.Id }, FormMethod.Post))
+                    {
+                        <input type="submit" value="Delete" class="btn btn-dark" />
+                    }
+                </td>
+            </tr>
+            i++;
+
+        }
+    </tbody>
+</table>

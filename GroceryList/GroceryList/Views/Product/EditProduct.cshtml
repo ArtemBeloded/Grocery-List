@@ -1,0 +1,25 @@
+﻿@model GroceryList.DAL.Models.Product
+
+
+@using (Html.BeginForm("UpdateProduct", "Product"))
+{
+    <input type="hidden" value="@Model.Id" name="Id" />
+    <input type="hidden" value="@Model.DateOfCreate" name="DateOfCreate" />
+    <table>
+        <tr>
+            <td><p>Product name</p></td>
+            <td><input type="text" name="Name" value="@Model.Name" /> </td>
+        </tr>
+        <tr>
+            <td><p>Quantity</p></td>
+            <td><input type="text" name="Quantity" value="@Model.Quantity" /> </td>
+            <td>
+                @Html.EnumDropDownListFor(Model => Model.units)
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Update" /> </td>
+            <td></td>
+        </tr>
+    </table>
+}

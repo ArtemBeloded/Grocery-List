@@ -1,0 +1,28 @@
+﻿@model GroceryList.DAL.Models.Product
+
+
+@using (Html.BeginForm("SaveNewProduct", "Product"))
+{
+    <table>
+        <tr>
+            <td><p>Enter product name</p></td>
+            <td><input type="text" name="Name" /> </td>
+        </tr>
+        <tr>
+            <td><p>Enter quantity</p></td>
+            <td><input type="text" name="Quantity" /> </td>
+            <td>
+                @Html.EnumDropDownListFor(Model => Model.units)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Выберите дату:</p> <input type="date" name="DateOfCreate" value="">
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Create" /> </td>
+            <td></td>
+        </tr>
+    </table>
+}

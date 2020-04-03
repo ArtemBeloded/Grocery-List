@@ -1,0 +1,28 @@
+﻿@model GroceryList.DAL.Models.Product
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Units</th>
+            <th>Date of creation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Name</td>
+            <td>@Model.Quantity</td>
+            <td>@Model.units</td>
+            <td>@Model.DateOfCreate</td>
+        </tr>
+    </tbody>
+</table>
+
+@using (Html.BeginForm("ListOfProduct", "Product"))
+{
+    <input type="submit" value="Come back" />
+}
+
