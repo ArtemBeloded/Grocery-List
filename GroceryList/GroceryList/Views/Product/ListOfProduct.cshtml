@@ -1,14 +1,25 @@
-﻿@model List<GroceryList.DAL.Models.Product>
+﻿@model IEnumerable<GroceryList.DAL.Models.Product>
 
-    <div>
-        @using (Html.BeginForm("AddProduct", "Product"))
-        {
-            <input type="submit" value="Add new product" />
+@*@section Styles{
+    <style>
+        table>tbody:first-child, table>tbody :last-child {
+            background-color:aqua;
         }
-    </div>
+    </style>
+}*@
+
+<div class="col-md-10">
+
+</div>
+<div class="col-md-2 ">
+    @using (Html.BeginForm("AddProduct", "Product"))
+    {
+        <input class="addbutton" type="submit" value="Add new product" style="vertical-align: " />
+    }
+</div>
 
 
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Id</th>
@@ -21,60 +32,32 @@
         @{int i = 1;}
         @foreach (var item in Model)
         {
-        <tr>
-            <td>@i</td>
-            <td>@item.Name</td>
-            <td>@item.Quantity</td>
-            <td>@item.units</td>
-            <td>
-                @using (Html.BeginForm("DetailProduct", "Product", new { id = item.Id }, FormMethod.Post))
-                {
-                    <input type="submit" value="Detail" />
-                }
-            </td>
-            <td>
-                @using (Html.BeginForm("EditProduct", "Product", new { id = item.Id }, FormMethod.Post))
-                {
-                    <input type="submit" value="Edit" />
-                }
-            </td>
-            <td>
-                @using (Html.BeginForm("DeleteProduct", "Product", new { id = item.Id }, FormMethod.Post))
-                {
-                    <input type="submit" value="Delete" />
-                }
-            </td>
-        </tr>
+            <tr>
+                <td>@i</td>
+                <td>@item.Name</td>
+                <td>@item.Quantity</td>
+                <td>@item.units</td>
+                <td>
+                    @using (Html.BeginForm("DetailProduct", "Product", new { id = item.Id }, FormMethod.Post))
+                    {
+                        <input type="submit" value="Detail" class="btn btn-dark" />
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("EditProduct", "Product", new { id = item.Id }, FormMethod.Post))
+                    {
+                        <input type="submit" value="Edit" class="btn btn-dark" />
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("DeleteProduct", "Product", new { id = item.Id }, FormMethod.Post))
+                    {
+                        <input type="submit" value="Delete" class="btn btn-dark" />
+                    }
+                </td>
+            </tr>
             i++;
 
         }
     </tbody>
 </table>
-
-
-<form action="https://google.com">
-    <input id="youtube" name="youtube" type="submit" value="Go to Google" />
-</form>
-<select id="countires" name="countires">
-    <option value="">Countries</option>
-    <option>Russia</option>
-    <option>USA</option>
-    <option>Canada</option>
-    <option>France</option>
-</select>
-
-<form action="/Home/Array" method="post">
-    <input id="names" name="names" type="text" value="" />
-    <input id="names" name="names" type="text" value="" />
-    <input id="names" name="names" type="text" value="" />
-    <input id="names" name="names" type="text" value="" />
-    <input type="submit" />
-</form>
-@using (Html.BeginForm())
-{
-    @Html.TextBox("names")
-    @Html.TextBox("names")
-    @Html.TextBox("names")
-    @Html.TextBox("names")
-    <input type="submit" />
-}

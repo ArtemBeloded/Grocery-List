@@ -10,15 +10,15 @@ namespace GroceryList.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ProductService _productService;
-        public ProductController()
+        private readonly IProductService _productService;
+        public ProductController(IProductService productService)
         {
-            _productService = new ProductService();
+            _productService = productService;
         }
         // GET: Product
         public ActionResult ListOfProduct()
         {
-            var products = _productService.GetProducts(this.HttpContext);
+            var products = _productService.GetProducts();
             return View(products);
         }
 
@@ -31,33 +31,33 @@ namespace GroceryList.Controllers
         {
             product.Id = Guid.NewGuid();
            // product.DateOfCreate = DateTime.Now;
-            _productService.AddProduct(product, this.HttpContext);
+            _productService.AddProduct(product);
             return RedirectToAction("ListOfProduct");
         }
 
         public ActionResult DetailProduct(Guid id) 
         {
-            var product = _productService.GetProduct(id, this.HttpContext);
+            var product = _productService.GetProduct(id);
             return View(product);
         }
 
         public ActionResult EditProduct(Guid id)
         {
-            var product = _productService.GetProduct(id, this.HttpContext);
+            var product = _productService.GetProduct(id);
             return View(product);
         }
 
         [HttpPost]
         public ActionResult UpdateProduct(Product product) 
         {
-            _productService.UpdateProduct(product, this.HttpContext);
+            _productService.UpdateProduct(product);
             return RedirectToAction("ListOfProduct");
         }
 
         [HttpPost]
         public ActionResult DeleteProduct(Guid id) 
         {
-            _productService.DeleteProduct(id, this.HttpContext);
+            _productService.DeleteProduct(id);
             return RedirectToAction("ListOfProduct");
         }
     }

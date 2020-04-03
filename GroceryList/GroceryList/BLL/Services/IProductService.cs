@@ -1,14 +1,16 @@
 ﻿using GroceryList.DAL.Models;
+using System;
 using System.Collections.Generic;
+using System.Web;
 
 namespace GroceryList.BLL.Services
 {
     public interface IProductService
     {
-        Product GetProduct(int id);
-        List<Product> GetProducts();
+        Product GetProduct(Guid id);
+        IEnumerable<Product> GetProducts();
         bool AddProduct(Product product);
         bool UpdateProduct(Product product);
-        bool DeleteProduct(int id);
+        bool DeleteProduct(Guid id);
     }
 }

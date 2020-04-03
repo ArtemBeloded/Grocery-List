@@ -7,38 +7,38 @@ using System.Web;
 
 namespace GroceryList.BLL.Services
 {
-    public class ProductService 
+    public class ProductService : IProductService
     {
-        private readonly ProductRepository _productRepository;
+        private readonly IProductRepository _productRepository;
 
-        public ProductService()
+        public ProductService(IProductRepository productRepository)
         {
-            _productRepository = new ProductRepository();
+            _productRepository = productRepository;
         }
 
-        public bool AddProduct(Product product, HttpContextBase httpContext)
+        public bool AddProduct(Product product)
         {
-            return _productRepository.AddProduct(product, httpContext);
+            return _productRepository.AddProduct(product);
         }
 
-        public bool DeleteProduct(Guid id, HttpContextBase httpContext)
+        public bool DeleteProduct(Guid id)
         {
-            return _productRepository.DeleteProduct(id, httpContext);
+            return _productRepository.DeleteProduct(id);
         }
 
-        public Product GetProduct(Guid id, HttpContextBase httpContext)
+        public Product GetProduct(Guid id)
         {
-            return _productRepository.GetProduct(id, httpContext);
+            return _productRepository.GetProduct(id);
         }
 
-        public List<Product> GetProducts(HttpContextBase httpContext)
+        public IEnumerable<Product> GetProducts()
         {
-            return _productRepository.GetProducts(httpContext);
+            return _productRepository.GetProducts();
         }
 
-        public bool UpdateProduct(Product product, HttpContextBase httpContext)
+        public bool UpdateProduct(Product product)
         {
-            return _productRepository.UpdateProduct(product, httpContext);
+            return _productRepository.UpdateProduct(product);
         }
     }
 }

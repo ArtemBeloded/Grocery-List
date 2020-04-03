@@ -84,3 +84,10 @@ C:\Users\Artem\Desktop\GitHub\Grocery-List\GroceryList\GroceryList\obj\Debug\Gro
 C:\Users\Artem\Desktop\GitHub\Grocery-List\GroceryList\GroceryList\obj\Debug\GroceryList.csproj.CopyComplete
 C:\Users\Artem\Desktop\GitHub\Grocery-List\GroceryList\GroceryList\obj\Debug\GroceryList.dll
 C:\Users\Artem\Desktop\GitHub\Grocery-List\GroceryList\GroceryList\obj\Debug\GroceryList.pdb
+C:\Users\Artem\Desktop\GitHub\Grocery-List\GroceryList\GroceryList\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Artem\Desktop\GitHub\Grocery-List\GroceryList\GroceryList\bin\Unity.Abstractions.dll
+C:\Users\Artem\Desktop\GitHub\Grocery-List\GroceryList\GroceryList\bin\Unity.Container.dll
+C:\Users\Artem\Desktop\GitHub\Grocery-List\GroceryList\GroceryList\bin\Unity.Mvc5.dll
+C:\Users\Artem\Desktop\GitHub\Grocery-List\GroceryList\GroceryList\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Artem\Desktop\GitHub\Grocery-List\GroceryList\GroceryList\bin\Unity.Abstractions.pdb
+C:\Users\Artem\Desktop\GitHub\Grocery-List\GroceryList\GroceryList\bin\Unity.Container.pdb

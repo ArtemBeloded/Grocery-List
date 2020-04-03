@@ -6,61 +6,58 @@ using System.Web;
 
 namespace GroceryList.DAL.Repositories
 {
-    public class ProductRepository
+    public class ProductRepository : IProductRepository
     {
         private ProductsBasket _productBasket;
-
+        private readonly HttpContextBase _httpContext;
         private Random rnd;
-        public ProductRepository()
+        public ProductRepository(HttpContextBase httpContext)
         {
             rnd = new Random();
+            _httpContext = httpContext;
+            InitSession();
         }
 
-        public bool AddProduct(Product product, HttpContextBase httpContext)
+        public bool AddProduct(Product product)
         {
-            InitSession(httpContext);
             _productBasket.Products.Add(product);
             return true;
         }
 
-        public bool DeleteProduct(Guid id, HttpContextBase httpContext)
+        public bool DeleteProduct(Guid id)
         {
-            InitSession(httpContext);
             var product = _productBasket.Products.FirstOrDefault(x => x.Id == id);
             _productBasket.Products.Remove(product);
             return true;
         }
 
-        public Product GetProduct(Guid id, HttpContextBase httpContext)
+        public Product GetProduct(Guid id)
         {
-            InitSession(httpContext);
             var product = _productBasket.Products.FirstOrDefault(x => x.Id == id);
             return product;
         }
 
-        public List<Product> GetProducts(HttpContextBase httpContext)
+        public IEnumerable<Product> GetProducts()
         {
-            InitSession(httpContext);
             var products = _productBasket.Products;
             return products;
         }
 
-        public bool UpdateProduct(Product product, HttpContextBase httpContext)
+        public bool UpdateProduct(Product product)
         {
-            InitSession(httpContext);
             var productForDelete = _productBasket.Products.FirstOrDefault(x => x.Id == product.Id);
             _productBasket.Products.Remove(productForDelete);
             _productBasket.Products.Add(product);
             return true;
         }
 
-        private void InitSession(HttpContextBase httpContext)
+        private void InitSession()
         {
-            _productBasket = httpContext.Session["Products"] as ProductsBasket;
+            _productBasket = _httpContext.Session["Products"] as ProductsBasket;
             if (_productBasket == null)
             {
-                httpContext.Session["Products"] = new ProductsBasket();
-                _productBasket = httpContext.Session["Products"] as ProductsBasket;
+                _httpContext.Session["Products"] = new ProductsBasket();
+                _productBasket = _httpContext.Session["Products"] as ProductsBasket;
                 //    _productBasket.Products.AddRange(new List<Product>() {
                 //    new Product(){Id = 0, Name = "Oil", Quantity = 2, units = Units.liter },
                 //    new Product(){Id = 1, Name = "Pasta", Quantity = 3, units = Units.pieces },
