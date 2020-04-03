@@ -45,9 +45,8 @@ namespace GroceryList.DAL.Repositories
 
         public bool UpdateProduct(Product product)
         {
-            var productForDelete = _productBasket.Products.FirstOrDefault(x => x.Id == product.Id);
-            _productBasket.Products.Remove(productForDelete);
-            _productBasket.Products.Add(product);
+            var count = _productBasket.Products.FindIndex(x => x.Id == product.Id);
+            _productBasket.Products[count] = product;
             return true;
         }
 

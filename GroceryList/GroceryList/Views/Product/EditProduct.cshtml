@@ -1,8 +1,9 @@
 ﻿@model GroceryList.DAL.Models.Product
 
 
-@using (Html.BeginForm("UpdateProduct", "Product"))
+@using (Html.BeginForm("UpdateProduct", "Product", FormMethod.Post))
 {
+    @Html.ValidationSummary()
     <input type="hidden" value="@Model.Id" name="Id" />
     <input type="hidden" value="@Model.DateOfCreate" name="DateOfCreate" />
     <table>
@@ -18,7 +19,7 @@
             </td>
         </tr>
         <tr>
-            <td><input type="submit" value="Update" /> </td>
+            <td><input type="submit" value="Update" new { onclick = "return confirm('Confirm Change ?');" }/> </td>
             <td></td>
         </tr>
     </table>

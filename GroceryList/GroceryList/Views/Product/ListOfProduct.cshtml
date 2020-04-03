@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<GroceryList.DAL.Models.Product>
 
-@*@section Styles{
+@section Styles{
     <style>
         table>tbody:first-child, table>tbody :last-child {
             background-color:aqua;
         }
     </style>
-}*@
+}
 
 <div class="col-md-10">
 
@@ -14,7 +14,7 @@
 <div class="col-md-2 ">
     @using (Html.BeginForm("AddProduct", "Product"))
     {
-        <input class="addbutton" type="submit" value="Add new product" style="vertical-align: " />
+        <input class="addbutton" type="submit" value="Add new product" style="vertical-align" />
     }
 </div>
 
@@ -50,7 +50,7 @@
                     }
                 </td>
                 <td>
-                    @using (Html.BeginForm("DeleteProduct", "Product", new { id = item.Id }, FormMethod.Post))
+                    @using (Html.BeginForm("DeleteProduct", "Product", new { id = item.Id }, FormMethod.Post, new { onclick = "return confirm('Confirm Deletion ?');" }))
                     {
                         <input type="submit" value="Delete" class="btn btn-dark" />
                     }

@@ -3,10 +3,12 @@
 
 @using (Html.BeginForm("SaveNewProduct", "Product"))
 {
+    @Html.ValidationSummary()
     <table>
+
         <tr>
             <td><p>Enter product name</p></td>
-            <td><input type="text" name="Name" /> </td>
+            <td><input type="text" name="Name" value=""/> </td>
         </tr>
         <tr>
             <td><p>Enter quantity</p></td>
@@ -17,7 +19,7 @@
         </tr>
         <tr>
             <td>
-                <p>Выберите дату:</p> <input type="date" name="DateOfCreate" value="">
+                <p>Выберите дату:</p> <input type="datetime-local" name="DateOfCreate" value="">
             </td>
         </tr>
         <tr>

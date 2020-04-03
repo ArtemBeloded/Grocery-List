@@ -26,16 +26,22 @@ namespace GroceryList.Controllers
         {
             return View();
         }
-
-        public ActionResult SaveNewProduct(Product product) 
+        [HttpPost]
+        public ActionResult SaveNewProduct(Product product)
         {
-            product.Id = Guid.NewGuid();
-           // product.DateOfCreate = DateTime.Now;
-            _productService.AddProduct(product);
-            return RedirectToAction("ListOfProduct");
+            if (ModelState.IsValid)
+            {
+                product.Id = Guid.NewGuid();
+                _productService.AddProduct(product);
+                return RedirectToAction("ListOfProduct");
+            }
+            else 
+            {
+                return View("AddProduct");
+            }
         }
 
-        public ActionResult DetailProduct(Guid id) 
+        public ActionResult DetailProduct(Guid id)
         {
             var product = _productService.GetProduct(id);
             return View(product);
@@ -48,14 +54,22 @@ namespace GroceryList.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateProduct(Product product) 
+        public ActionResult UpdateProduct(Product product)
         {
-            _productService.UpdateProduct(product);
-            return RedirectToAction("ListOfProduct");
+            if (ModelState.IsValid)
+            {
+                _productService.UpdateProduct(product);
+                return RedirectToAction("ListOfProduct");
+            }
+            else
+            {
+                return View("EditProduct", product);
+            }
+
         }
 
         [HttpPost]
-        public ActionResult DeleteProduct(Guid id) 
+        public ActionResult DeleteProduct(Guid id)
         {
             _productService.DeleteProduct(id);
             return RedirectToAction("ListOfProduct");
