@@ -70,7 +70,7 @@ namespace GroceryList.DAL.Repositories
                         Id = Guid.NewGuid(),
                         Name = "Product" + i,
                         Quantity = rnd.Next(1, 1000),
-                        units = (Units)Enum.GetValues(typeof(Units)).GetValue(rnd.Next(5)),
+                        unit = (Units)Enum.GetValues(typeof(Units)).GetValue(rnd.Next(5)),
                         DateOfCreate = DateTime.Now
                     });
                 }

@@ -13,7 +13,7 @@ namespace GroceryList.DAL.Models
         [RegularExpression("^[0-9]+$", ErrorMessage = "Enter a valid quantity")]
         public int Quantity { get; set; }
         [Required(ErrorMessage = "Please specify your unit")]
-        public Units units { get; set; }
+        public Units unit { get; set; }
         [Required(ErrorMessage = "Please specify date of creation")]
         public DateTime DateOfCreate { get; set; }
     }

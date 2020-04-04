@@ -8,10 +8,10 @@ namespace GroceryList.DAL.Models
 {
     public enum Units
     {
-        pieces = 0,
-        kilo = 1,
-        gramme,
-        liter,
-        milliliter
+        pcs = 0,
+        kg = 1,
+        g,
+        l,
+        ml
     }
 }
