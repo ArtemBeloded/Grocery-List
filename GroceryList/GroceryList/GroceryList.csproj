@@ -133,17 +133,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
-    <Compile Include="BLL\Services\IProductService.cs" />
-    <Compile Include="BLL\Services\ProductService.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="DAL\Repositories\IProductRepository.cs" />
-    <Compile Include="DAL\Repositories\ProductRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="DAL\Models\Product.cs" />
-    <Compile Include="DAL\Models\ProductsBasket.cs" />
-    <Compile Include="DAL\Models\Units.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -155,8 +148,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="lib\vue\vue.js" />
+    <Content Include="lib\vue\vue.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="libman.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -199,6 +195,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GroceryList.BLL\GroceryList.BLL.csproj">
+      <Project>{9AB27F75-89B7-4EF8-867F-2F3F9104DC79}</Project>
+      <Name>GroceryList.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GroceryList.DAL\GroceryList.DAL.csproj">
+      <Project>{1DABDC1F-0B84-4F13-9470-FFF6929BD98B}</Project>
+      <Name>GroceryList.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
