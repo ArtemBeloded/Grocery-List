@@ -30,8 +30,6 @@
         </div>
     </form>
 }
-
-@using (Html.BeginForm("ListOfProduct", "Product"))
-{
-    <input class="btn btn-primary" type="submit" value="Come back" />
-}
+<div>
+    @Html.ActionLink("Come back", "ListOfProduct", "Product", new { @class = "btn btn-primary" })
+</div>

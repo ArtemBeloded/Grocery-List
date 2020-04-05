@@ -1,94 +1,44 @@
 ﻿@model IEnumerable<GroceryList.DAL.Models.Product>
-@using Newtonsoft.Json
+	@using Newtonsoft.Json
 
-<div class="col-md-2 col-sm-offset-10">
-    @using (Html.BeginForm("AddProduct", "Product"))
-    {
-        <input class="btn btn-success" type="submit" value="Add new product" />
-    }
-</div>
+	<div class="col-md-2 col-sm-offset-10">
+		@Html.ActionLink("Add new Product", "AddProduct", "Product", new {@class = "btn btn-success"})
+	</div>
 
+	<table id="product-list" class="table  table-bordered ">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th v-on:click="sortByQuantity()" :style="{cursor: 'pointer'}">Quantity</th>
+				<th v-on:click="groupByUnits()" :style="{cursor: 'pointer'}">Units</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr v-for="(item,i) in list">
+				<td>{{i+1}}</td>
+				<td>{{item.Name}}</td>
+				<td>{{item.Quantity}}</td>
+				<td>{{item.unit}}</td>
+				<td>
+					<button class="btn btn-info" @@click="goToProductDetail(item)">Detail</button>
+				</td>
+				<td>
+					<button class="btn btn-info" @@click="goToProductEdit(item)">Edit</button>
+				</td>
+				<td>
+					<input class="btn btn-danger" type="submit" value="Delete" v-on:click="deleteProduct(item, i)" />
+				</td>
+			</tr>
+		</tbody>
+	</table>
 
-<table class="table  table-bordered ">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Units</th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @{int i = 1;}
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@i</td>
-                <td>@item.Name</td>
-                <td>@item.Quantity</td>
-                <td>@item.unit</td>
-                <td>
-                    @using (Html.BeginForm("DetailProduct", "Product", new { id = item.Id }, FormMethod.Post))
-                    {
-                        <input class="btn btn-info" type="submit" value="Detail" />
-                    }
-                </td>
-                <td>
-                    @using (Html.BeginForm("EditProduct", "Product", new { id = item.Id }, FormMethod.Post))
-                    {
-                        <input class="btn btn-warning" type="submit" value="Edit" />
-                    }
-                </td>
-                <td>
-                    @using (Html.BeginForm("DeleteProduct", "Product", new { id = item.Id }, FormMethod.Post, new { onclick = "return confirm('Confirm Deletion ?');" }))
-                    {
-                        <input class="btn btn-danger" type="submit" value="Delete" />
-                    }
-                </td>
-            </tr>
-            i++;
-
-        }
-    </tbody>
-</table>
-
-<table id="product-list" class="table  table-bordered ">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Units</th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr v-for="(item,i) in list">
-            <td>{{i+1}}</td>
-            <td>{{item.Name}}</td>
-            <td>{{item.Quantity}}</td>
-            <td>{{item.unit}}</td>
-            <td>
-                <input class="btn btn-info" type="submit" value="Detail"  />
-            </td>
-            <td>
-                <input class="btn btn-warning" type="submit" value="Edit" />
-            </td>
-            <td>
-                <input class="btn btn-danger" type="submit" value="Delete" v-on:click="deleteProduct(item, i)" />
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-@section scripts{
-    <script src="~/lib/vue/vue.js"></script>
-    <script>
+	@section scripts{
+		<script src="~/lib/vue/vue.js"></script>
+		<script>
         var app = new Vue({
             el: "#product-list",
             data: {
@@ -99,13 +49,40 @@
                     var isConfirmed = confirm(`Confirm delete product ${product.Name}?`);
                     if (isConfirmed) {
                         fetch(`Product/DeleteProduct/${product.Id}`, {method: 'POST'})
-                        .then((response) => { 
-                            console.log(response); this.list.splice(index, 1); 
+                        .then((response) => {
+                            console.log(response); this.list.splice(index, 1);
                         });
-
                     }
-                }
-            }
+                },
+                goToProductDetail(product){
+					window.location.href = `/Product/DetailProduct/${product.Id}`;
+				},
+				goToProductEdit(product){
+					window.location.href = `/Product/EditProduct/${product.Id}`;
+				},
+				groupByUnits() {
+					this.list.sort((a, b) => {
+						if (a.unit > b.unit) {
+							return 1;
+						}
+						if (a.unit < b.unit) {
+							return -1;
+						}
+						return 0;
+					});
+				},
+				sortByQuantity() {
+					this.list.sort((a, b) => {
+                        if (a.Quantity > b.Quantity) {
+                            return -1;
+                        }
+                        if (a.Quantity < b.Quantity) {
+                            return 1;
+                        }
+                        return 0;
+					});
+				}
+			 }
         });
-    </script>
-}
+		</script>
+	}

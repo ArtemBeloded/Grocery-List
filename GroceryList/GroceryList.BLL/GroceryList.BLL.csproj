@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{63434285-7BC5-434F-8992-FC0E15A14079}</ProjectGuid>
+    <ProjectGuid>{01478A4B-F5F1-4B9E-8F49-B5EDADD911FF}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>GroceryList.BLL</RootNamespace>
     <AssemblyName>GroceryList.BLL</AssemblyName>

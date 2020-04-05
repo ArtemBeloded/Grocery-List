@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{706ABB00-32B6-4866-803C-F46F6AA454CC}</ProjectGuid>
+    <ProjectGuid>{C4E911E4-4E6E-498F-8B3D-AD622C046487}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>GroceryList.DAL</RootNamespace>
     <AssemblyName>GroceryList.DAL</AssemblyName>
@@ -35,6 +35,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

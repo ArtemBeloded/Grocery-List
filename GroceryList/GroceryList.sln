@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryList", "GroceryList\GroceryList.csproj", "{8EBD8878-376F-41E6-9A3C-A25041B6722D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryList.DAL", "GroceryList.DAL\GroceryList.DAL.csproj", "{C4E911E4-4E6E-498F-8B3D-AD622C046487}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryList.BLL", "GroceryList.BLL\GroceryList.BLL.csproj", "{01478A4B-F5F1-4B9E-8F49-B5EDADD911FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{8EBD8878-376F-41E6-9A3C-A25041B6722D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EBD8878-376F-41E6-9A3C-A25041B6722D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EBD8878-376F-41E6-9A3C-A25041B6722D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4E911E4-4E6E-498F-8B3D-AD622C046487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4E911E4-4E6E-498F-8B3D-AD622C046487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4E911E4-4E6E-498F-8B3D-AD622C046487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4E911E4-4E6E-498F-8B3D-AD622C046487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01478A4B-F5F1-4B9E-8F49-B5EDADD911FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01478A4B-F5F1-4B9E-8F49-B5EDADD911FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01478A4B-F5F1-4B9E-8F49-B5EDADD911FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01478A4B-F5F1-4B9E-8F49-B5EDADD911FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

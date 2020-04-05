@@ -11,6 +11,7 @@ namespace GroceryList.DAL.Repositories
         private ProductsBasket _productBasket;
         private readonly HttpContextBase _httpContext;
         private Random rnd;
+
         public ProductRepository(HttpContextBase httpContext)
         {
             rnd = new Random();
@@ -57,12 +58,6 @@ namespace GroceryList.DAL.Repositories
             {
                 _httpContext.Session["Products"] = new ProductsBasket();
                 _productBasket = _httpContext.Session["Products"] as ProductsBasket;
-                //    _productBasket.Products.AddRange(new List<Product>() {
-                //    new Product(){Id = 0, Name = "Oil", Quantity = 2, units = Units.liter },
-                //    new Product(){Id = 1, Name = "Pasta", Quantity = 3, units = Units.pieces },
-                //    new Product(){Id = 2, Name = "Sugar", Quantity = 5, units = Units.kilo },
-                //    new Product(){Id = 3, Name = "Water", Quantity = 500, units = Units.milliliter }
-                //});
                 for (int i = 1; i <= 15; i++)
                 {
                     _productBasket.Products.Add(new Product()
